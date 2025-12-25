@@ -39,3 +39,18 @@ Follow these steps to set up the project locally:
 ```bash
 git clone <repository-url>
 cd <project-folder>
+
+### 2. Install Dependencies
+npm install
+# or
+yarn install
+# or
+pnpm install
+
+### 3. Configure Environment Variables
+UPSTASH_REDIS_REST_URL="your-upstash-redis-rest-url"
+UPSTASH_REDIS_REST_TOKEN="your-upstash-redis-rest-token"
+
+### 4. Run the Development Server
+npm run dev
+
