@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { nanoid } from "nanoid"
+import { useRouter } from "next/navigation"
 
 const ANIMAL = ["Lion", "Tiger", "Bear", "Wolf", "Fox", "Eagle", "Shark", "Dolphin"]
 const STORAGE_KEY = "chat_username"
@@ -13,6 +14,7 @@ const generateUsername = () => {
 
 export default function Home() {
   const [username, setUsername] = useState("")
+  const router = useRouter()
 
   useEffect(() => {
     const stored = localStorage.getItem(STORAGE_KEY)
@@ -32,6 +34,10 @@ export default function Home() {
       })
       const data = await response.json()
       console.log("Room created:", data.roomId)
+      
+      if (response.status==200){
+        router.push(`/room/${data?.roomId}`)
+      }
     } catch (error) {
       console.error("Failed to create room:", error)
     }
